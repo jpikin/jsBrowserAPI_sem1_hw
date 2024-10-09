@@ -1,0 +1,17 @@
+[
+    {
+        "lesson":"Math",
+        "total_students": 30,
+        "current_students":29
+    },
+    {
+        "lesson":"History",
+        "total_students": 25,
+        "current_students":7
+    },
+    {
+        "lesson":"Biology",
+        "total_students": 27,
+        "current_students":27
+    }
+]
