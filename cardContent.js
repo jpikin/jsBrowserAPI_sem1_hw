@@ -45,6 +45,9 @@ const createCard = function (lesson, max, current) {
     btn.classList.add('btn', 'btn-primary');
     btn.textContent = 'Записаться';
     btn.href = '#';
+    btn.addEventListener('click', ()=>{
+        //TODO
+    });
     cardBody.appendChild(btn);
 }
 
