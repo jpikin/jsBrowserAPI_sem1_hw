@@ -1,10 +1,9 @@
-
+const card = document.querySelector('.card');
 /**
  * Создаем карточку занятия
  */
-const createCard = function () {
+const createCard = function (lesson, max, current) {
 
-    const card = document.querySelector('.card');
     const cardBody = document.createElement('div');
     cardBody.classList.add('card-body');
     card.appendChild(cardBody);
@@ -14,6 +13,7 @@ const createCard = function () {
     cardTitle.textContent = 'Занятие: ';
     //
     const title = document.createElement('span'); // Название занятия
+    title.textContent = lesson
     //
     title.classList.add('title');
     cardTitle.appendChild(title);
@@ -24,6 +24,7 @@ const createCard = function () {
     cardText.textContent = 'Максимальное количество учеников: ';
     //
     const maxStudents = document.createElement('span'); // Максимальное количество учеников
+    maxStudents.textContent = max;
     //
     maxStudents.classList.add('max-students');
     cardText.appendChild(maxStudents);
@@ -34,6 +35,7 @@ const createCard = function () {
     cardText2.textContent = 'Текущее количество учеников: ';
     //
     const currentStudents = document.createElement('span'); // Текущее количество учеников
+    currentStudents.textContent = current;
     //
     currentStudents.classList.add('current-students');
     cardText2.appendChild(currentStudents);
