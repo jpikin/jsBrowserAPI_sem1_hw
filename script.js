@@ -13,8 +13,11 @@ async function getJson() {
         parsedData.forEach(lesson => {
             createCard(lesson.lesson, lesson.total_students, lesson.current_students);
         });
+        
     } catch (error) {
         console.error(error);
     }
+    
 }
 getJson();
+

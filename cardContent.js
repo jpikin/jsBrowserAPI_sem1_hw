@@ -45,10 +45,45 @@ const createCard = function (lesson, max, current) {
     btn.classList.add('btn', 'btn-primary');
     btn.textContent = 'Записаться';
     btn.href = '#';
+    if (current >= max) {
+        btn.classList.add('disabled')
+    }
     btn.addEventListener('click', ()=>{
-        //TODO
+        cancelBtn.classList.remove('d-none');
+        current++;
+        readJsonFile();
+        saveJson(lesson, current);
     });
     cardBody.appendChild(btn);
+
+    const cancelBtn = document.createElement('a');
+    cancelBtn.classList.add('d-none');
+    cancelBtn.textContent = 'Отменить запись';
+    cancelBtn.href="#";
+    cancelBtn.addEventListener('click', ()=>{
+        cancelBtn.classList.add('d-none');
+    });
+    cardBody.appendChild(cancelBtn);
+
 }
 
-
+async function saveJson(title, data) {
+    
+    try {
+        const rawData = await fetch("lessons.json");
+        if (!rawData.ok) {
+            throw new Error(`HTTP error! Status: ${rawData.status}`);
+        }
+        const jsonText = await rawData.text();
+        const parsedData = JSON.parse(jsonText);
+        parsedData.forEach(lesson => {
+            if(lesson.lesson === title) {
+                lesson.currentStudents = data;
+            }
+        });
+        
+    } catch (error) {
+        console.error(error);
+    }
+    
+}
