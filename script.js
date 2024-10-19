@@ -2,6 +2,7 @@ const card = document.querySelector('.card');
 /**
  * Создаем карточку занятия
  */
+<<<<<<< HEAD
 const createCard = function (lesson, max, current) {
 
     const cardBody = document.createElement('div');
@@ -75,4 +76,25 @@ const createCard = function (lesson, max, current) {
     cardBody.appendChild(btn);
 }
 
+=======
+async function getJson() {
+    try {
+        const rawData = await fetch("lessons.json");
+        if (!rawData.ok) {
+            throw new Error(`HTTP error! Status: ${rawData.status}`);
+        }
+        const jsonText = await rawData.text();
+        const parsedData = JSON.parse(jsonText);
+        
+        parsedData.forEach(lesson => {
+            createCard(lesson.lesson, lesson.total_students, lesson.current_students);
+        });
+        
+    } catch (error) {
+        console.error(error);
+    }
+    
+}
+getJson();
+>>>>>>> 239d50b4a3ce83e6b1e92efd123e8ca7e70651ed
 
